@@ -1,3 +1,5 @@
+[![Python application](https://github.com/marc0x71/multi-join/actions/workflows/python-app.yml/badge.svg)](https://github.com/marc0x71/multi-join/actions/workflows/python-app.yml)
+
 # multi-join
 Join multiple files in Python
 
