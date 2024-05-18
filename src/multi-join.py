@@ -2,8 +2,8 @@
 
 
 import argparse
-from file_handler import FileHandler
-from join import join_files
+from project.file_handler import FileHandler
+from project.join import join_files
 
 
 def main():

@@ -1,9 +1,9 @@
 from typing import Generator, List, Optional
 
-from file_handler import FileHandler
+from project.file_handler import FileHandler
 
 
-def join_files(files: List[FileHandler]):# -> Generator[List[Optional[str]], None, None]:
+def join_files(files: List[FileHandler]) -> Generator[List[Optional[str]], None, None]:
     for file in files:
         file.open()
 
@@ -11,9 +11,12 @@ def join_files(files: List[FileHandler]):# -> Generator[List[Optional[str]], Non
     others = files[1:]
 
     for value, line in master.readlines():
+        got = [other.validate(value) for other in others]
+        yield [line] + got
+
         while True:
             got = [other.validate(value) for other in others]
-            
+
             if all(x == None for x in got):
                 break
             
