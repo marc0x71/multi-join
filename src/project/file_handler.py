@@ -53,17 +53,19 @@ class FileHandler:
     def validate(self, value: str) -> Optional[str]:
         if self.__eof:
             return None
+        
+        if self.__value is None or self.__value < value:
+            self.__read()
 
-        result = None
-        if not self.__value:
+        while self.__value is not None and self.__value < value:
             self.__read()
 
         if self.__value == value:
             result = self.__line
             self.__value = None
             self.__line = None
-
-        return result
+            return result
+        return None
 
     @property
     def eof(self):
