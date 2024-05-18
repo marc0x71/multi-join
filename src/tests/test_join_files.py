@@ -100,3 +100,30 @@ def test_join_files_multiple():
     ]
 
     assert got == exp
+
+def test_join_files_eof():
+    files = [MagicMock(id=x) for x in range(3)]
+
+    master = files[0]
+    master.readlines = MagicMock(
+        return_value=[
+            ("0", "0|master0"),
+            ("1", "1|master1"),
+            ("2", "2|master2"),
+        ]
+    )
+
+    files[1].eof = True
+    files[2].eof = True
+
+    got = []
+    for values in join_files(files):
+        got.append(values)
+
+    exp = [
+        ["0|master0", None, None],
+        ["1|master1", None, None],
+        ["2|master2", None, None],
+    ]
+
+    assert got == exp
