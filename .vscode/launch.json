@@ -5,7 +5,7 @@
             "name": "Python Debugger: Current File with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/src/multi-join.py",
             "console": "integratedTerminal",
             "args": [
                 "-f", 
@@ -15,6 +15,21 @@
                 "-k", "0", "0", "0",
                 "-s", "|"
             ]
+        },
+        {
+            "name": "Python: Debug Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "purpose": [
+                "debug-test"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTEST_ADDOPTS": "--no-cov",
+            },
         }
+        
     ]
 }
