@@ -1,0 +1,17 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.testing.pytestArgs": [
+        "-v",
+        "--cov",
+        "--cov-report=xml:cov.xml",
+        "--pdb",
+        "src/tests",
+    ],
+    
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.cwd": "${workspaceFolder}",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+}
