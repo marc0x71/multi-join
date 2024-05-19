@@ -1,7 +1,7 @@
 import itertools
 from typing import Generator, List, Optional
 
-from project.file_handler import FileHandler
+from .file_handler import FileHandler
 
 
 def join_files(files: List[FileHandler]) -> Generator[List[Optional[str]], None, None]:

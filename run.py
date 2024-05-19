@@ -2,8 +2,9 @@
 
 
 import argparse
-from project.file_handler import FileHandler
-from project.join import join_files
+
+from multi_join.file_handler import FileHandler
+from multi_join.join import join_files
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
     if not all(x.isnumeric() for x in keys):
         print("Invalid keys, must be numbers")
         exit(1)
-    
+
     if len(separator) > 1:
         print("Invalid separator length")
         exit(1)

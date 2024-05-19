@@ -1,11 +1,11 @@
 from io import StringIO
 from unittest.mock import MagicMock, patch
 
-from project.checks import IsSortedChecker, build_sorted_checker, checks_fails
+from multi_join.checks import IsSortedChecker, build_sorted_checker, checks_fails
 
 
-@patch("project.file_handler.ChecksFailedCallbackFn")
-@patch("project.checks.IsSortedChecker")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.checks.IsSortedChecker")
 def test_build_sorted_checker(
     mocked_is_sort_checker: MagicMock, mocked_callback: MagicMock
 ):
@@ -16,7 +16,7 @@ def test_build_sorted_checker(
     assert got == mocked_is_sort_checker()
 
 
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_is_sorted_no_call(mocked_callback: MagicMock):
     checker = IsSortedChecker("filename", mocked_callback)
 
@@ -26,7 +26,7 @@ def test_is_sorted_no_call(mocked_callback: MagicMock):
     mocked_callback.assert_not_called()
 
 
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_is_sorted_single_value_unexpected(mocked_callback: MagicMock):
     checker = IsSortedChecker("filename", mocked_callback)
 
@@ -36,7 +36,7 @@ def test_is_sorted_single_value_unexpected(mocked_callback: MagicMock):
     mocked_callback.assert_called_once_with("filename", "not sorted")
 
 
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_is_sorted_more_values_unexpected(mocked_callback: MagicMock):
     checker = IsSortedChecker("filename", mocked_callback)
 

@@ -1,6 +1,6 @@
 from typing import Callable, Generator, Optional, Protocol, Tuple
 
-from project.checks import (
+from .checks import (
     ChecksFailedCallbackFn,
     Checker,
     CheckerBuilderFn,

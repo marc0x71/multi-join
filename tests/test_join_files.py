@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from project.join import join_files
+from multi_join.join import join_files
 
 
 def test_join_files_basic():

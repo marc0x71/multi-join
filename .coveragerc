@@ -1,9 +1,0 @@
-[run]
-omit = ./src/tests/*
-
-[report]
-exclude_lines =
-    # Skip any pass lines such as may be used for @abstractmethod
-    pass
-    dataclasses.asdict
-

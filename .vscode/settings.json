@@ -7,7 +7,7 @@
         "--cov",
         "--cov-report=xml:cov.xml",
         "--pdb",
-        "src/tests",
+        "tests",
     ],
     
     "python.testing.unittestEnabled": false,

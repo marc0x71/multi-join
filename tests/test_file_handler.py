@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, call, patch
 
-from project.file_handler import FileHandler
+from multi_join.file_handler import FileHandler
 
 
 def test_file_handler_open_close():
@@ -13,8 +13,8 @@ def test_file_handler_open_close():
         file.close.assert_called_once()
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_readlines(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -51,8 +51,8 @@ def test_file_handler_readlines(checks_callback: MagicMock, checker_builder: Mag
         assert got == exp
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_normal(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -87,8 +87,8 @@ def test_file_handler_validate_normal(checks_callback: MagicMock, checker_builde
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_last_missing(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -123,8 +123,8 @@ def test_file_handler_validate_last_missing(checks_callback: MagicMock, checker_
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_eof(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -159,8 +159,8 @@ def test_file_handler_validate_eof(checks_callback: MagicMock, checker_builder: 
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_with_gap_middle(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -195,8 +195,8 @@ def test_file_handler_validate_with_gap_middle(checks_callback: MagicMock, check
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_with_gap_first(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -231,8 +231,8 @@ def test_file_handler_validate_with_gap_first(checks_callback: MagicMock, checke
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_with_gap_last(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -267,8 +267,8 @@ def test_file_handler_validate_with_gap_last(checks_callback: MagicMock, checker
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_with_gap_single(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
@@ -308,8 +308,8 @@ def test_file_handler_validate_with_gap_single(checks_callback: MagicMock, check
         assert exp == got
 
 
-@patch("project.file_handler.CheckerBuilderFn")
-@patch("project.file_handler.ChecksFailedCallbackFn")
+@patch("multi_join.file_handler.CheckerBuilderFn")
+@patch("multi_join.file_handler.ChecksFailedCallbackFn")
 def test_file_handler_validate_with_gap_double(checks_callback: MagicMock, checker_builder: MagicMock):
     mocked_checker = MagicMock()
     checker_builder.return_value = mocked_checker
