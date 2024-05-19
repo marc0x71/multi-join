@@ -163,3 +163,4 @@ example
 cov.xml
 pytest-coverage.txt  
 pytest.xml
+reports
