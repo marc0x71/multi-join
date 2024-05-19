@@ -6,7 +6,7 @@ ChecksFailedCallbackFn = Callable[[str, str], None]
 
 class Checker(Protocol):
     def check(self, new_value: str) -> None:
-        pass
+        """"""
 
 
 class IsSortedChecker:

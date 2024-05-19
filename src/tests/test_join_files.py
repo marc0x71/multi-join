@@ -25,7 +25,7 @@ def test_join_files_basic():
     files[2].eof = False
 
     got = []
-    for values in join_files(files):
+    for values in join_files(files):  # type: ignore[override]
         got.append(values)
 
     exp = [
@@ -55,7 +55,7 @@ def test_join_files_no_match():
     files[2].eof = False
 
     got = []
-    for values in join_files(files):
+    for values in join_files(files):  # type: ignore[override]
         got.append(values)
 
     exp = [
@@ -89,7 +89,7 @@ def test_join_files_multiple():
     files[2].eof = False
 
     got = []
-    for values in join_files(files):
+    for values in join_files(files):  # type: ignore[override]
         got.append(values)
 
     exp = [
@@ -100,6 +100,7 @@ def test_join_files_multiple():
     ]
 
     assert got == exp
+
 
 def test_join_files_eof():
     files = [MagicMock(id=x) for x in range(3)]
@@ -117,7 +118,7 @@ def test_join_files_eof():
     files[2].eof = True
 
     got = []
-    for values in join_files(files):
+    for values in join_files(files):  # type: ignore[override]
         got.append(values)
 
     exp = [
