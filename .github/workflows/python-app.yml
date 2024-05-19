@@ -43,4 +43,4 @@ jobs:
         run: |
           coverage report
           coverage xml
-          genbadge coverage
+          genbadge coverage -i coverage.xml
