@@ -2,30 +2,30 @@ from typing import Optional
 
 
 class FileHandler:
-    __filename: str
-    __key_position: int
-    __separator: str
+    filename: str
+    key_position: int
+    separator: str
+    eof: bool = False
     __fd = None  # type: ignore[override]
-    __eof: bool = False
     __value: Optional[str] = None
     __line: Optional[str] = None
 
     def __init__(self, filename: str, key_position: int, separator: str = "|") -> None:
-        self.__filename = filename
-        self.__key_position = key_position
-        self.__separator = separator
+        self.filename = filename
+        self.key_position = key_position
+        self.separator = separator
 
     def __del__(self):
         if self.__fd is not None:
             self.__fd.close()
 
     def open(self):
-        self.__fd = open(self.__filename, "r", encoding="utf-8")
+        self.__fd = open(self.filename, "r", encoding="utf-8")
 
     def readline(self) -> Optional[str]:
         line = self.__fd.readline()  # type: ignore[override]
         if not line:
-            self.__eof = True
+            self.eof = True
             return None
         return line.strip()
 
@@ -38,9 +38,9 @@ class FileHandler:
             return
 
         self.__line = row.strip()
-        v = self.__line.split(self.__separator)
-        if len(v) > self.__key_position:
-            self.__value = v[self.__key_position]
+        v = self.__line.split(self.separator)
+        if len(v) > self.key_position:
+            self.__value = v[self.key_position]
 
     def readlines(self):
         while True:
@@ -51,7 +51,7 @@ class FileHandler:
             yield self.__value, self.__line
 
     def validate(self, value: str) -> Optional[str]:
-        if self.__eof:
+        if self.eof:
             return None
 
         if self.__value is None or self.__value < value:
@@ -66,7 +66,3 @@ class FileHandler:
             self.__line = None
             return result
         return None
-
-    @property
-    def eof(self):
-        return self.__eof
