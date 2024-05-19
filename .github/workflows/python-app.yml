@@ -35,7 +35,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest --junitxml=reports/junit/junit.xml
+          pytest --junitxml=reports/junit/junit.xml --cov
       - name: Generating the badge of tests
         run: |
           genbadge tests
