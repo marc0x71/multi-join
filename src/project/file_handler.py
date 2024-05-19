@@ -5,10 +5,10 @@ class FileHandler:
     __filename: str
     __key_position: int
     __separator: str
-    __fd = None
+    __fd = None  # type: ignore[override]
     __eof: bool = False
-    __value: str = None
-    __line: str = None
+    __value: Optional[str] = None
+    __line: Optional[str] = None
 
     def __init__(self, filename: str, key_position: int, separator: str = "|") -> None:
         self.__filename = filename
@@ -23,7 +23,7 @@ class FileHandler:
         self.__fd = open(self.__filename, "r", encoding="utf-8")
 
     def readline(self) -> Optional[str]:
-        line = self.__fd.readline()
+        line = self.__fd.readline()  # type: ignore[override]
         if not line:
             self.__eof = True
             return None
@@ -53,7 +53,7 @@ class FileHandler:
     def validate(self, value: str) -> Optional[str]:
         if self.__eof:
             return None
-        
+
         if self.__value is None or self.__value < value:
             self.__read()
 
